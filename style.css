@@ -1,0 +1,1112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0e0e0e;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+
+body.hero-active header.hero {
+  position: fixed;
+}
+body:not(.hero-active) header.hero {
+  position: relative;
+}
+
+/* ==========================================
+   🔹 SECȚIUNEA HERO (PAGINA PRINCIPALĂ)
+   ========================================== */
+
+/* HERO full-screen, fix pe ecran */
+header.hero {
+  position: fixed;              /* rămâne fix pe ecran */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;                /* ocupă întregul ecran */
+  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80') 
+              center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1000;
+}
+
+/* Overlay semi-transparent peste imagine */
+header.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* Conținutul din hero (text, butoane etc.) */
+.hero-content {
+  position: relative;
+  z-index: 2;                   /* peste overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+/* Titlul principal */
+.hero-content h1 {
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  animation: slideDown 1.2s ease;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #fff;
+}
+
+/* Subtitlu / text secundar */
+.hero-content p {
+  margin: 1rem 0 2rem;
+  font-size: 1.2rem;
+  color: #eee;
+}
+/* ===============================================
+   🔹 GALERIE FOTO
+   =============================================== */
+.gallery {
+  display: none;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.gallery.visible {
+  display: block;
+  animation: fadeIn 1s ease forwards;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.photo-gallery {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slides-container {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: contain;
+  max-height: 60vh;
+  border-radius: 12px;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+
+
+/* Fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* Alte sectiuni */
+section {
+  padding: 100px 10%;
+  text-align: center;
+}
+.logo{
+  width: 700px;
+  height: fit-content;
+}
+.logo img{
+  width: 100%;
+}
+   
+
+/* Butoanele cu iconițe */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* se rearanjează pe mai multe rânduri dacă e nevoie */
+  justify-content: center;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ff0055;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.icon-btn i {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover inovativ */
+.icon-btn:hover {
+  background: #ff3388;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.icon-btn:hover i {
+  transform: rotate(20deg) scale(1.2);
+}
+
+/* Responsive: pe mobil se pun pe două rânduri */
+@media (max-width: 768px) {
+  .hero-buttons {
+    gap: 15px;
+  }
+
+  .icon-btn {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .icon-btn i {
+    font-size: 18px;
+  }
+  .logo{
+  width: 100%;
+  height: fit-content;
+}
+}
+
+    button {
+      padding: 0.8rem .1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #ff0000, #ff8800);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      text-transform: uppercase;
+      text-decoration: solid;
+      margin-top: 3px;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #ff8800, #ff0000);
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================================
+       🔹 BUTOANE FIXE DE CONTACT
+    ========================================== */
+    .floating-contact {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 9999;
+    }
+
+    /* Buton comun */
+    .float-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .float-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Buton apel */
+    .float-btn.phone {
+      background: linear-gradient(135deg, #007bff, #00b3ff);
+      animation: pulse-blue 2.5s infinite;
+    }
+
+    /* Buton WhatsApp */
+    .float-btn.whatsapp {
+      background: linear-gradient(135deg, #25d366, #1ebe5d);
+      animation: pulse-green 2.5s infinite;
+    }
+
+    /* Efecte pulsante */
+    @keyframes pulse-blue {
+      0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+    }
+
+    @keyframes pulse-green {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* Versiune mobil */
+    @media (max-width: 600px) {
+      .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      .hero-content h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      animation: slideDown 1.2s ease;
+    }
+    }
+
+    /* ==========================================
+       🔹 EFECT PORTAL SF
+    ========================================== */
+    .portal-effect {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, var(--portal-color, #ff0000), #000 70%);
+      z-index: 99999;
+      animation: portalZoom 1s ease forwards;
+      pointer-events: none;
+    }
+
+    @keyframes portalZoom {
+      0% {
+        transform: scale(0);
+        opacity: 0.8;
+      }
+      60% {
+        transform: scale(2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(6);
+        opacity: 0;
+      }
+    }
+
+button {
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff0000, #ff8800);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #ff8800, #ff0000);
+}
+
+section {
+  padding: 100px 10%;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about p{
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 40px 0;
+  font-size: 1.2rem;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+footer {
+  background: #111;
+  padding: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll fade-in effect */
+.fade-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ===============================================
+   🔹 SECTIUNEA DESPRE PROIECT
+   =============================================== */
+.about {
+  display: none;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+  padding: 80px 20px;
+  color: #fff;
+  text-align: center;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+  border-top: 2px solid #ff2a2a;
+}
+
+.about.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff2a2a;
+  text-shadow: 0 0 10px rgba(255, 42, 42, 0.6);
+}
+
+.about p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.btn-container {
+  margin-top: 40px;
+}
+
+
+
+/* 🎬 Animații fade */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(40px); }
+}
+
+
+
+/* ==============================
+   SECTIUNEA EXERCITII
+============================== */
+.exercises-lab {
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+  color: #fff;
+  padding: 60px 20px;
+  border-top: 2px solid #ff2a2a;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 25px rgba(255, 42, 42, 0.2);
+}
+
+.exercises-lab h2 {
+  color: #ff2a2a;
+  font-size: 1.8rem;
+  text-shadow: 0 0 8px rgba(255, 42, 42, 0.6);
+  margin-bottom: 10px;
+}
+
+.time-limit {
+  color: #0b74de;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.exercises-slider {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 30px;
+}
+
+/* Desktop - grid și fără scroll */
+@media (min-width: 900px) {
+  .exercises-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    overflow-x: hidden;
+    scroll-snap-type: none;
+    gap: 30px;
+  }
+}
+
+
+.exercise-card {
+  flex: 0 0 90%;
+  max-width: 800px;
+  background: rgba(20, 20, 20, 0.95);
+  border: 2px solid #ff2a2a;
+  border-radius: 15px;
+  padding: 30px;
+  scroll-snap-align: center;
+  text-align: left;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(255, 42, 42, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.exercise-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 42, 42, 0.4);
+}
+
+.exercise-card h3 {
+  color: #0b74de;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.exercise-card ul {
+  margin-left: 25px;
+  list-style: square;
+}
+
+.exercise-card li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.exercise-card .note {
+  margin-top: 15px;
+  font-style: italic;
+  color: #ccc;
+  text-align: center;
+}
+
+.scroll-hint {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  text-align: center;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+
+/* ==============================
+   SECTIUNEA ECHIPA
+============================== */
+.team {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, #0a0a0a, #111);
+  color: var(--text);
+  width: 100%;
+}
+
+.team h2 {
+  color: #ff3355;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.team-intro {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1600px;
+  margin: 0 auto;
+}.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 coloane pe ecrane mai mici */
+  }
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr; /* 1 coloană pe mobil */
+  }
+}
+
+
+.member {
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.member img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+.member h3 {
+  margin: 8px 0;
+  font-size: 1.3rem;
+}
+
+.member .role {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.member .desc {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+/* Card descriptiv student */
+.desc-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 20px 25px;
+  margin-top: 15px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.desc-card p {
+  margin-bottom: 12px;
+  
+}
+.desc-card p a {
+  color: #00ffee;           /* culoarea link-ului */
+  text-decoration: underline; /* subliniere */
+  font-weight: 500;          /* grosimea fontului */
+  transition: 0.3s;
+}
+
+.desc-card p a:hover {
+  color: #0bb;               /* culoare la hover */
+  text-decoration: none;     /* elimină sublinierea la hover dacă vrei */
+}
+
+
+.desc-card a.project-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: linear-gradient(45deg, #00ffee, #0bb);
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.desc-card a.project-link:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #0bb, #00ffee);
+}
+
+/* Efect hover pe card */
+.member.student-1:hover .desc-card {
+  background: rgba(0, 238, 255, 0.08);
+  border-color: #00ffee;
+  box-shadow: 0 8px 20px rgba(0, 255, 238, 0.3);
+}
+
+
+/* 🎓 Mentor – elegant, profesional */
+.member.mentor {
+  background: linear-gradient(135deg, #1e1e1e, #333);
+  border: 2px solid #ff3355;
+}
+.member.mentor h3 {
+  color: #ff3355;
+}
+.member.mentor .role {
+  color: #ffd700;
+}
+
+/* ⚙️ Popescu Matei Rafael – stil "tech neon" */
+.member:nth-child(2) {
+  background: radial-gradient(circle at top, #0f0f0f, #1a1a1a);
+  border: 2px solid #00ffee;
+  box-shadow: 0 0 15px rgba(0, 255, 238, 0.4);
+}
+.member:nth-child(2) h3 {
+  color: #00ffee;
+}
+.member:nth-child(2) .role {
+  color: #00ccff;
+}
+
+/* 🎮 Dascălu Mihai – stil "gamer / neon violet" */
+.member:nth-child(3) {
+  background: linear-gradient(135deg, #1a0029, #3b0066);
+  border: 2px solid #a855f7;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+.member:nth-child(3) h3 {
+  color: #c084fc;
+}
+.member:nth-child(3) .role {
+  color: #d8b4fe;
+}
+
+/* 🎨 Dascălu Maria Raluca – stil "creativ, pastel" */
+.member:nth-child(4) {
+  background: linear-gradient(135deg, #ffe0f0, #ffc7e2);
+  color: #333;
+  border: 2px solid #ff8ac9;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
+}
+.member:nth-child(4) h3 {
+  color: #d63384;
+}
+.member:nth-child(4) .role {
+  color: #ff1493;
+}
+.member:nth-child(4) .desc {
+  color: #555;
+}
+
+/* ✨ Animație subtilă la apariție */
+.member {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.member:nth-child(1) { animation-delay: 0.2s; }
+.member:nth-child(2) { animation-delay: 0.4s; }
+.member:nth-child(3) { animation-delay: 0.6s; }
+.member:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =======================================
+   🔹 BUTOANE FIXE DE CONTACT
+   Poziționate în colțul dreapta-jos
+======================================= */
+.floating-contact {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999; /* asigură că apar deasupra tuturor */
+}
+
+/* 🔹 Stil general pentru ambele butoane */
+.float-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* 🔹 Efect de hover */
+.float-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* 🔹 Telefon (albastru) */
+.float-btn.phone {
+  background: linear-gradient(135deg, #007bff, #00b3ff);
+  animation: pulse-blue 2.5s infinite;
+}
+
+/* 🔹 WhatsApp (verde) */
+.float-btn.whatsapp {
+  background: linear-gradient(135deg, #25d366, #1ebe5d);
+  animation: pulse-green 2.5s infinite;
+}
+
+/* 🔹 Animație pulsantă subtilă pentru atenție */
+@keyframes pulse-blue {
+  0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+}
+
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* 🔹 Versiune mobil (puțin mai mici) */
+@media (max-width: 600px) {
+  .float-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
+
+/* ✨ Efect de portal */
+.portal-effect {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #ff0000, #000 70%);
+  z-index: 99999;
+  animation: portalZoom 1s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes portalZoom {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  60% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(6);
+    opacity: 0;
+  }
+}
+
+
+.tech-clock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Orbitron', sans-serif;
+  color: rgb(255, 255, 255);
+  margin: 50px auto;
+  z-index: 10;
+}
+
+.circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgb(255, 255, 255), 0 0 40px rgb(255, 255, 255), 0 0 60px rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hour-hand,
+.minute-hand,
+.second-hand {
+  position: absolute;
+  bottom: 50%;
+  width: 2px;
+  background: rgb(255, 255, 255);
+  transform-origin: bottom center;
+  border-radius: 2px;
+}
+
+.hour-hand {
+  height: 40px;
+  background: linear-gradient(to top, #0ff, #00f);
+}
+
+.minute-hand {
+  height: 60px;
+  background: linear-gradient(to top, #0ff, #0f0);
+}
+
+.second-hand {
+  height: 80px;
+  background: linear-gradient(to top, #f00, #ff0);
+}
+
+.center-dot {
+  width: 10px;
+  height: 10px;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.digital-time {
+  margin-top: 20px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255);
+}
+
+/* ===============================================
+   🔹 SECȚIUNEA PARTENERI / FOOTER
+   =============================================== */
+.partners {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #fff;
+  padding: 60px 20px 30px;
+  margin-top: auto;
+  position: relative;
+  bottom: 0;
+}
+
+.partners h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.partners-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.partner {
+  flex: 0 1 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.partner img {
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.partner img:hover {
+  transform: scale(1.1);
+  filter: brightness(1) invert(0.1);
+}
+
+.partner p {
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 6px;
+  color: #ccc;
+}
+
+/* 🔸 Versiune mobil */
+@media (max-width: 768px) {
+  .partners {
+    padding: 40px 10px 20px;
+  }
+  .partners-grid {
+    gap: 25px;
+  }
+  .partner img {
+    max-width: 70px;
+  }
+  .partner p {
+    font-size: 0.7rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  
+.tech-clock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Orbitron', sans-serif;
+  color: rgb(255, 255, 255);
+  margin: 10px;
+  z-index: 10;
+}
+.circle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+
+}
+.hour-hand {
+  height: 20px;
+  background: linear-gradient(to top, #0ff, #00f);
+}
+
+.minute-hand {
+  height: 30px;
+  background: linear-gradient(to top, #0ff, #0f0);
+}
+
+.second-hand {
+  height: 20px;
+  background: linear-gradient(to top, #f00, #ff0);
+}
+
+.center-dot {
+  width: 5px;
+  height: 5px;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+  position: absolute;
+}
+.digital-time {
+  margin-top: 20px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255);
+}
+}
+
+
+.project-link {
+  display: inline-block;
+  background: #ff0000;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.project-link:hover {
+  background: #e60000;
+}
