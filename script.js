@@ -304,3 +304,18 @@ nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
 
     // 🔁 actualizează automat la încărcarea paginii
     document.addEventListener("DOMContentLoaded", showLocalWeather);
+
+
+
+    window.addEventListener('load', function () {
+  const preloader = document.getElementById('preloader');
+  const video = document.getElementById('preloader-video');
+
+  // Când se termină videoclipul
+  video.addEventListener('ended', () => {
+    preloader.classList.add('hidden');
+  });
+
+  // Siguranță: dacă se încarcă pagina mai repede decât clipul
+  setTimeout(() => preloader.classList.add('hidden'), 8000); // fallback 8s
+});
