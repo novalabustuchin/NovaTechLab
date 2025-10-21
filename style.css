@@ -107,8 +107,10 @@ header.hero .overlay {
 }
 
 .slides-container {
-  display: flex;
-  transition: transform 0.6s ease-in-out;
+display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  touch-action: pan-y; /* permite glisarea orizontală fără să deranjeze scroll-ul vertical */
 }
 
 .slide {
@@ -481,9 +483,8 @@ footer {
 }
 
 
-
 /* ==============================
-   SECTIUNEA EXERCITII
+   SECTIUNEA EXERCITII (REDESIGN)
 ============================== */
 .exercises-lab {
   background: radial-gradient(circle at center, #111 0%, #000 100%);
@@ -492,56 +493,55 @@ footer {
   border-top: 2px solid #ff2a2a;
   border-radius: 15px;
   text-align: center;
-  max-width: 100%;
-  overflow: hidden;
   position: relative;
+  max-width: 100%;
   box-shadow: 0 0 25px rgba(255, 42, 42, 0.2);
+  overflow: hidden;
 }
 
 .exercises-lab h2 {
   color: #ff2a2a;
   font-size: 1.8rem;
   text-shadow: 0 0 8px rgba(255, 42, 42, 0.6);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.time-limit {
-  color: #0b74de;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
-
+/* =========================================
+   CONTAINER GENERAL – slider pe mobile,
+   flex-wrap pe desktop
+========================================= */
 .exercises-slider {
   display: flex;
-  gap: 40px;
+  flex-wrap: nowrap;
+  gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
+  justify-content: flex-start;
 }
 
-/* Desktop - grid și fără scroll */
-@media (min-width: 900px) {
-  .exercises-slider {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    overflow-x: hidden;
-    scroll-snap-type: none;
-    gap: 30px;
-  }
+/* Ascundem scrollbarul la mobile pentru look curat */
+.exercises-slider::-webkit-scrollbar {
+  display: none;
+}
+.exercises-slider {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-
+/* =========================================
+   CARDURILE DE EXERCITII
+========================================= */
 .exercise-card {
-  flex: 0 0 90%;
-  max-width: 800px;
+  flex: 0 0 100%;
+  max-width: 100%;
   background: rgba(20, 20, 20, 0.95);
   border: 2px solid #ff2a2a;
   border-radius: 15px;
   padding: 30px;
   scroll-snap-align: center;
   text-align: left;
-  margin: 0 auto;
   box-shadow: 0 0 15px rgba(255, 42, 42, 0.15);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -574,6 +574,15 @@ footer {
   text-align: center;
 }
 
+.time-limit {
+  color: #0b74de;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+/* =========================================
+   SCROLL HINT
+========================================= */
 .scroll-hint {
   color: #888;
   font-size: 0.9rem;
@@ -585,6 +594,40 @@ footer {
 @keyframes blink {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 1; }
+}
+
+/* =========================================
+   DESKTOP – grilă elegantă fără scroll
+========================================= */
+@media (min-width: 900px) {
+  .exercises-slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    overflow-x: hidden;
+    scroll-snap-type: none;
+  }
+
+  .exercise-card {
+    flex: 1 1 calc(33.333% - 30px);
+    max-width: 400px;
+    margin: 0;
+  }
+
+  .scroll-hint {
+    display: none; /* ascundem textul de scroll pe desktop */
+  }
+}
+
+/* =========================================
+   TABLETE – 2 carduri pe rând
+========================================= */
+@media (min-width: 600px) and (max-width: 899px) {
+  .exercise-card {
+    flex: 0 0 80%;
+    max-width: 500px;
+  }
 }
 
 
@@ -1208,3 +1251,71 @@ footer {
   to { opacity: 1; }
 }
 
+/* 🔹 STIL GENERAL PENTRU BUTONUL "Înapoi" */
+.close-about,
+.close-exercises,
+.close-team,
+.close-gallery {
+  display: block;
+  margin: 50px auto 30px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--clr-accent, #00bcd4);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.close-about:hover,
+.close-exercises:hover,
+.close-team:hover,
+.close-gallery:hover {
+  background: #008fa1;
+  transform: scale(1.05);
+}
+
+/* 🔹 Poziționare coerentă */
+.about .close-about,
+.exercises-lab .close-exercises,
+.team .close-team,
+.gallery .close-gallery {
+  text-align: center;
+}
+
+/* 🔹 MEDIA QUERY PENTRU MOBILE */
+@media (max-width: 768px) {
+  .close-about,
+  .close-exercises,
+  .close-team,
+  .close-gallery {
+    width: 90%;
+    margin: 30px auto 50px;
+    font-size: 1.1rem;
+    padding: 14px;
+    border-radius: 12px;
+    position: relative;
+    bottom: 0;
+    display: block !important; /* asigură afișarea */
+    z-index: 10;
+  }
+
+  /* Dacă secțiunile au overflow ascuns */
+  .about,
+  .exercises-lab,
+  .team,
+  .gallery {
+    overflow: visible !important;
+  }
+}
+
+/* 🔹 Siguranță suplimentară: vizibilitate forțată */
+.close-about,
+.close-exercises,
+.close-team,
+.close-gallery {
+  visibility: visible !important;
+  opacity: 1 !important;
+}

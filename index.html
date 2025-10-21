@@ -68,26 +68,7 @@
      🔹 SECTIUNEA DESPRE PROIECT (ABOUT)
      =============================================== -->
 <section id="aboutSection" class="about fade-section" >
-      <!-- ===============================================
-     🔹 PANOU PARTENERI / IMPLICARE (FOOTER)
-     =============================================== -->
-<section class="partners fade-section" id="partnersSection">
-  <h2>Parteneri și Implicare</h2>
-  <div class="partners-grid">
-    <div class="partner">
-      <img src="img/comuna bustuchin.png" alt="Primăria Bustuchin">
-      <p>Primăria Comunei Bustuchin</p>
-    </div>
-    <div class="partner">
-      <img src="img/Liceul Tehnologic Bustuchin.png" alt="Liceul Tehnologic Bustuchin">
-      <p>Liceul Tehnologic Bustuchin</p>
-    </div>
-    <div class="partner">
-      <img src="img/NOVAtechLabBustuchin logo alb.png" alt="Nova Lab Bustuchin">
-      <p>Nova Lab Bustuchin</p>
-    </div>
-  </div>
-</section>
+     
       <h2>Despre Proiect</h2>
     <p>
       Nova Lab Bustuchin este o inițiativă creată pentru a încuraja
@@ -116,12 +97,30 @@
       oferind tinerilor motivația și resursele necesare pentru a-și urma
       pasiunile în domeniul tehnologic.
     </p>
-    
+     <!-- ===============================================
+     🔹 PANOU PARTENERI / IMPLICARE (FOOTER)
+     =============================================== -->
+<section class="partners fade-section" id="partnersSection">
+  <h2>Parteneri și Implicare</h2>
+  <div class="partners-grid">
+    <div class="partner">
+      <img src="img/comuna bustuchin.png" alt="Primăria Bustuchin">
+      <p>Primăria Comunei Bustuchin</p>
+    </div>
+    <div class="partner">
+      <img src="img/Liceul Tehnologic Bustuchin.png" alt="Liceul Tehnologic Bustuchin">
+      <p>Liceul Tehnologic Bustuchin</p>
+    </div>
+    <div class="partner">
+      <img src="img/NOVAtechLabBustuchin logo alb.png" alt="Nova Lab Bustuchin">
+      <p>Nova Lab Bustuchin</p>
+    </div>
+  </div>
+</section>
 
 </section>
 
-<!-- Sectiunea EXERCITII -->
-<!-- Sectiunea EXERCITII -->
+<!-- Secțiunea EXERCITII -->
 <section class="exercises-lab">
   <h2>🧠 Exerciții pentru tinerii exploratori</h2>
   <div class="exercises-slider">
@@ -170,11 +169,35 @@
       <p class="time-limit">⏱️ Timp total: 2 ore</p>
       <p class="note">🚀 Fii creativ și folosește efecte vizuale care evidențiază identitatea Nova Lab.</p>
     </div>
+
+    <!-- 🆕 Exercițiu 4 -->
+    <div class="exercise-card">
+      <h3>Exercițiu 4 – Preloader cu animația logo-ului</h3>
+      <p>
+        După ce logo-ul este animat în <strong>Blender</strong>, adaugă-l ca <em>preloader</em> la începutul site-ului tău.  
+        Acesta va apărea înainte ca pagina să fie complet încărcată și va oferi o tranziție elegantă către conținut.
+      </p>
+      <ul>
+        <li>Exportă animația ca video <code>preloader_logo.mp4</code></li>
+        <li>Adaugă în pagina ta HTML o secțiune de preloader:
+          <pre><code>&lt;div id="preloader"&gt;
+  &lt;video autoplay muted playsinline&gt;
+    &lt;source src="video/preloader_logo.mp4" <br> type="video/mp4"&gt;
+  &lt;/video&gt;
+&lt;/div&gt;
+</code></pre>
+        </li>
+        <li>Folosește CSS pentru a face video-ul full-screen și JS pentru a-l ascunde după redare.</li>
+        <li>Testează pe desktop și mobile (adaugă <code>object-fit: contain</code> pentru ecrane mici).</li>
+      </ul>
+      <p class="time-limit">⏱️ Timp total: 1 oră</p>
+      <p class="note">🎬 Scopul acestui preloader este de a indica încărcarea completă a paginii, oferind în același timp o identitate vizuală profesională clubului.</p>
+    </div>
   </div>
 
   <div class="scroll-hint">⬅️ Derulează spre dreapta ➡️</div>
-
 </section>
+
 
   
   <!-- =======================================

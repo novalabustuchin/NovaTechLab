@@ -180,7 +180,6 @@ function updateClock() {
 // update la fiecare secundă
 setInterval(updateClock, 1000);
 updateClock();
-
 // ===============================================
 // 🔹 GALLERY SECTION
 // ===============================================
@@ -198,7 +197,7 @@ if (!closeGalleryBtn) {
 galleryBtn.addEventListener('click', () => showOnlySection(gallerySection));
 closeGalleryBtn.addEventListener('click', () => hideSection(gallerySection));
 
-// ====== slider logic simplu ======
+// ====== slider logic ======
 const slidesContainer = document.querySelector('.slides-container');
 const slides = document.querySelectorAll('.slide');
 const prevBtn = document.querySelector('.prev');
@@ -212,10 +211,42 @@ function showSlide(index) {
   slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
-prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
-nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+// 🔹 Navigare prin butoane (doar pe desktop)
+if (window.innerWidth > 768) {
+  prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+  nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+} else {
+  // 🔹 Pe mobile: activăm swipe cu degetul
+  let startX = 0;
+  let endX = 0;
 
+  slidesContainer.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
 
+  slidesContainer.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  slidesContainer.addEventListener('touchend', () => {
+    const diff = startX - endX;
+    const swipeThreshold = 50; // minim 50px pentru a fi considerat swipe
+
+    if (diff > swipeThreshold) {
+      // glisare spre stânga → următorul slide
+      showSlide(currentSlide + 1);
+    } else if (diff < -swipeThreshold) {
+      // glisare spre dreapta → slide anterior
+      showSlide(currentSlide - 1);
+    }
+  });
+}
+
+// 🔹 Ascundem butoanele pe mobile
+if (window.innerWidth <= 768) {
+  if (prevBtn) prevBtn.style.display = 'none';
+  if (nextBtn) nextBtn.style.display = 'none';
+}
 
 
 
