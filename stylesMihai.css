@@ -97,6 +97,20 @@ header p {
   line-height: 1.6;
 }
 
+.socialMedia a{
+  text-decoration: none;
+  color:white;
+  margin-left:10px;
+  margin-right:10px;
+  font-size: x-large;
+
+}
+
+.socialMedia {
+  display: inline;
+}
+
+
 /* =====================
    DECORATIE
 ===================== */
@@ -145,3 +159,4 @@ footer {
     font-size: 0.9rem;
   }
 }
+
