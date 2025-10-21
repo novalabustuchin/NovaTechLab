@@ -553,7 +553,7 @@ footer {
 
 .exercise-card h3 {
   color: #0b74de;
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin-bottom: 10px;
 }
 
@@ -566,13 +566,29 @@ footer {
   margin-bottom: 8px;
   line-height: 1.6;
 }
+.exercise-card p{
+  font-size: .8rem;
+}
+
 
 .exercise-card .note {
   margin-top: 15px;
   font-style: italic;
   color: #ccc;
   text-align: center;
+  font-size: .8rem;
+  font-family: 'Poppins', sans-serif; /* sau alt font dorit */
 }
+.exercises-lab pre {
+  background: rgba(255, 42, 42, 0.05);
+  border: 1px solid #ff2a2a;
+  border-radius: 8px;
+  padding: 10px;
+  overflow-x: auto; /* permite scroll orizontal dacă e prea lung codul */
+  white-space: pre-wrap; /* sau pre pentru păstrarea exactă a indentării */
+  word-wrap: break-word; /* sparge cuvinte lungi */
+}
+
 
 .time-limit {
   color: #0b74de;
@@ -618,6 +634,7 @@ footer {
   .scroll-hint {
     display: none; /* ascundem textul de scroll pe desktop */
   }
+  
 }
 
 /* =========================================
@@ -628,7 +645,34 @@ footer {
     flex: 0 0 80%;
     max-width: 500px;
   }
+ .exercise-card ul {
+  margin-left: 25px;
+  list-style: square;
 }
+
+.exercise-card li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+}
+@media (max-width: 600px) {
+  .exercise-card {
+    font-size: .8rem;
+  }
+  .exercise-card p{
+    font-size: .9rem;
+  }
+ .exercise-card ul {
+  font-size: .8rem;
+}
+
+.exercise-card li {
+  font-size: .7rem;
+}
+
+
+}
+
 
 
 /* ==============================

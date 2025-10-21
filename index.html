@@ -179,14 +179,17 @@
       </p>
       <ul>
         <li>Exportă animația ca video <code>preloader_logo.mp4</code></li>
-        <li>Adaugă în pagina ta HTML o secțiune de preloader:
-          <pre><code>&lt;div id="preloader"&gt;
+        <li>
+  Adaugă în pagina ta HTML o secțiune de preloader:
+  <pre><code>
+&lt;div id="preloader"&gt;
   &lt;video autoplay muted playsinline&gt;
-    &lt;source src="video/preloader_logo.mp4" <br> type="video/mp4"&gt;
+    &lt;source src="video/preloader_logo.mp4" type="video/mp4"&gt;
   &lt;/video&gt;
 &lt;/div&gt;
-</code></pre>
-        </li>
+  </code></pre>
+</li>
+
         <li>Folosește CSS pentru a face video-ul full-screen și JS pentru a-l ascunde după redare.</li>
         <li>Testează pe desktop și mobile (adaugă <code>object-fit: contain</code> pentru ecrane mici).</li>
       </ul>
