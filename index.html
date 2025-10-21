@@ -5,20 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nova Lab Bustuchin</title>
   <link rel="stylesheet" href="style.css" />
+   <!-- Font Awesome pentru iconițe meteo -->
+  <script src="https://kit.fontawesome.com/a2e0e6ad3c.js" crossorigin="anonymous"></script>
+
+  <!-- Font modern -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/f26a888174.js" crossorigin="anonymous"></script>  
 </head>
 <body>
   
   <header class="hero">
-    <div class="tech-clock">
-      <div class="circle">
-        <div class="hour-hand"></div>
-        <div class="minute-hand"></div>
-        <div class="second-hand"></div>
-        <div class="center-dot"></div>
-      </div>
-      <div class="digital-time">00:00:00</div>
-    </div>
+     <div class="main-container">
+        <div class="tech-clock">
+          <div class="circle">
+            <div class="hour-hand"></div>
+            <div class="minute-hand"></div>
+            <div class="second-hand"></div>
+            <div class="center-dot"></div>
+          </div>
+          <div class="digital-time" id="digital-time">00:00:00</div>
+        </div>
+        <div class="right-home-panel" id="weather-panel">
+          <p class="loading">Se încarcă vremea locală...</p>
+        </div>
+     </div>
 
     <div class="overlay"></div>
     <div class="hero-content">

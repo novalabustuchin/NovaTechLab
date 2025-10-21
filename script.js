@@ -214,3 +214,93 @@ function showSlide(index) {
 
 prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
 nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+
+
+
+
+ const apiKey = '658ab63cff086fa13b7cf1215d8a20ed';
+    const rightPanel = document.getElementById('weather-panel');
+
+    function isDaytime(time) {
+      const hour = time.getHours();
+      return hour >= 6 && hour <= 18;
+    }
+
+    function getWeatherIcon(weather, isDaytime) {
+      const icons = {
+        'Clear': isDaytime ? '<i class="fas fa-sun weather-icon"></i>' : '<i class="fas fa-moon weather-icon"></i>',
+        'Rain': '<i class="fas fa-cloud-showers-heavy weather-icon"></i>',
+        'Clouds': isDaytime ? '<i class="fas fa-cloud-sun weather-icon"></i>' : '<i class="fas fa-cloud-moon weather-icon"></i>',
+        'Snow': '<i class="fas fa-snowflake weather-icon"></i>',
+        'Thunderstorm': '<i class="fas fa-bolt weather-icon"></i>',
+        'Mist': '<i class="fas fa-smog weather-icon"></i>'
+      };
+      return icons[weather] || '<i class="fas fa-question-circle weather-icon"></i>';
+    }
+
+    async function fetchWeatherByCoords(lat, lon) {
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Eroare la preluarea vremii");
+      const data = await response.json();
+
+      const localTime = new Date(data.dt * 1000);
+      return {
+        name: data.name || "Loc necunoscut",
+        temp: Math.round(data.main.temp),
+        weather: data.weather[0].main,
+        isDaytime: isDaytime(localTime)
+      };
+    }
+
+    async function fetchWeatherByCity(city = "Bustuchin") {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},ro&appid=${apiKey}&units=metric`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Eroare la preluarea vremii default");
+      const data = await response.json();
+
+      const localTime = new Date(data.dt * 1000);
+      return {
+        name: data.name,
+        temp: Math.round(data.main.temp),
+        weather: data.weather[0].main,
+        isDaytime: isDaytime(localTime)
+      };
+    }
+
+    function showWeather(info) {
+      rightPanel.innerHTML = `
+        <div class="weather-widget">
+          <h3>${info.name}</h3>
+          ${getWeatherIcon(info.weather, info.isDaytime)}
+          <p class="temperature">${info.temp}°C</p>
+          <p class="condition">${info.weather}</p>
+        </div>
+      `;
+    }
+
+    async function showLocalWeather() {
+      try {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(async (pos) => {
+            const { latitude, longitude } = pos.coords;
+            const weather = await fetchWeatherByCoords(latitude, longitude);
+            showWeather(weather);
+          }, async (error) => {
+            console.warn("Geolocație refuzată, se folosește Bustuchin");
+            const weather = await fetchWeatherByCity();
+            showWeather(weather);
+          });
+        } else {
+          const weather = await fetchWeatherByCity();
+          showWeather(weather);
+        }
+      } catch (error) {
+        console.error(error);
+        rightPanel.innerHTML = "<p>Eroare la obținerea datelor meteo.</p>";
+      }
+    }
+
+    // 🔁 actualizează automat la încărcarea paginii
+    document.addEventListener("DOMContentLoaded", showLocalWeather);
