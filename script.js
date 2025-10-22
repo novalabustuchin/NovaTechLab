@@ -1,7 +1,7 @@
 // ===============================================
 // 🔹 SCROLL FADE-IN (pentru secțiunile vizibile la scroll)
 // ===============================================
-const sectionsToReveal = document.querySelectorAll('.fade-section:not(.about):not(.exercises-lab):not(.team)');
+const sectionsToReveal = document.querySelectorAll('.fade-section:not(.about):not(.exercises-lab):not(.team):not(.gallery):not(.footpath)');
 
 function revealSections() {
   const triggerBottom = window.innerHeight * 0.8;
@@ -30,7 +30,7 @@ function hideSection(section) {
 
 function showOnlySection(section) {
   // ascunde toate secțiunile principale
-  const allSections = document.querySelectorAll('.about, .exercises-lab, .team, .gallery');
+  const allSections = document.querySelectorAll('.about, .exercises-lab, .team, .gallery, .footpath');
   allSections.forEach(sec => {
     if (sec !== section) {
       sec.classList.remove('visible');
@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
   exerciseBtn.addEventListener('click', () => scrollToSection(exerciseSection));
   teamBtn.addEventListener('click', () => scrollToSection(teamSection));
   galleryBtn.addEventListener('click', () => scrollToSection(gallerySection)); // ✅ nou
+   footpathBtn.addEventListener('click', () => scrollToSection(footpathSection));
 });
 
 
@@ -337,16 +338,78 @@ if (window.innerWidth <= 768) {
     document.addEventListener("DOMContentLoaded", showLocalWeather);
 
 
-
-    window.addEventListener('load', function () {
+/* ===== PRELOADER VIDEO ===== */
+window.addEventListener('load', function () {
   const preloader = document.getElementById('preloader');
   const video = document.getElementById('preloader-video');
 
-  // Când se termină videoclipul
+  if (!preloader || !video) return;
+
+  // 🔸 Ascundem scroll-ul doar temporar
+  document.body.style.overflow = 'hidden';
+
   video.addEventListener('ended', () => {
-    preloader.classList.add('hidden');
+    preloader.classList.add('fade-out');
+
+    setTimeout(() => {
+      preloader.remove();
+      // 🔸 Reactivăm scroll-ul normal după dispariția preloaderului
+      document.body.style.overflow = '';
+    }, 800);
   });
 
-  // Siguranță: dacă se încarcă pagina mai repede decât clipul
-  setTimeout(() => preloader.classList.add('hidden'), 8000); // fallback 8s
+  // 🔸 Fallback – în caz că video-ul nu pornește
+  setTimeout(() => {
+    if (document.body.contains(preloader)) {
+      preloader.classList.add('fade-out');
+      setTimeout(() => {
+        preloader.remove();
+        document.body.style.overflow = '';
+      }, 800);
+    }
+  }, 10000);
 });
+
+
+
+// ===============================================
+// 🔹 FOOTPATH SECTION
+// ===============================================
+// selectăm secțiunea footpath și butonul principal
+const footpathSection = document.querySelector('.footpath.fade-section');
+const footpathBtn = document.getElementById('openFootpathBtn');
+
+if (footpathSection && footpathBtn) {
+  // ✅ buton de închidere (înapoi)
+  let closeFootpathBtn = footpathSection.querySelector('.close-footpath');
+  if (!closeFootpathBtn) {
+    closeFootpathBtn = document.createElement('button');
+    closeFootpathBtn.textContent = 'Înapoi';
+    closeFootpathBtn.className = 'close-footpath';
+    footpathSection.appendChild(closeFootpathBtn);
+  }
+
+  // ✅ deschidere secțiune Footpath
+  footpathBtn.addEventListener('click', () => showOnlySection(footpathSection));
+
+  // ✅ închidere secțiune Footpath
+  closeFootpathBtn.addEventListener('click', () => hideSection(footpathSection));
+
+  // comutare trasee (dacă există mai multe trasee)
+  footpathSection.querySelectorAll('.path-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const path = btn.dataset.path;
+      footpathSection.querySelectorAll('.footpath-map').forEach(map => {
+        map.style.display = map.dataset.path === path ? 'flex' : 'none';
+      });
+    });
+  });
+
+  // click pe noduri – deschide pagina curs
+  footpathSection.querySelectorAll('.node').forEach(node => {
+    node.addEventListener('click', () => {
+      const topic = node.dataset.topic;
+      window.open(`footpath/${topic}.html`, '_blank');
+    });
+  });
+}
