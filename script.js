@@ -338,14 +338,25 @@ if (window.innerWidth <= 768) {
     document.addEventListener("DOMContentLoaded", showLocalWeather);
 
 
-/* ===== PRELOADER VIDEO ===== */
+/* ===== PRELOADER VIDEO (doar pe telefoane) ===== */
 window.addEventListener('load', function () {
+  // ✅ verificăm dacă este dispozitiv mobil
+  const isMobile = window.innerWidth <= 768;
+
+  if (!isMobile) {
+    // dacă e desktop → eliminăm complet preloaderul (dacă există în HTML)
+    const preloader = document.getElementById('preloader');
+    if (preloader) preloader.remove();
+    return; // oprim aici
+  }
+
+  // 🔹 dacă e mobil, continuăm cu logica normală
   const preloader = document.getElementById('preloader');
   const video = document.getElementById('preloader-video');
 
   if (!preloader || !video) return;
 
-  // 🔸 Ascundem scroll-ul doar temporar
+  // 🔸 ascundem scroll-ul temporar
   document.body.style.overflow = 'hidden';
 
   video.addEventListener('ended', () => {
@@ -353,12 +364,11 @@ window.addEventListener('load', function () {
 
     setTimeout(() => {
       preloader.remove();
-      // 🔸 Reactivăm scroll-ul normal după dispariția preloaderului
-      document.body.style.overflow = '';
+      document.body.style.overflow = ''; // reactivăm scroll
     }, 800);
   });
 
-  // 🔸 Fallback – în caz că video-ul nu pornește
+  // 🔸 fallback în caz că video-ul nu se încarcă
   setTimeout(() => {
     if (document.body.contains(preloader)) {
       preloader.classList.add('fade-out');
@@ -369,7 +379,6 @@ window.addEventListener('load', function () {
     }
   }, 10000);
 });
-
 
 
 // ===============================================

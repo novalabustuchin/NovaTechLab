@@ -34,8 +34,10 @@ header.hero {
   left: 0;
   width: 100vw;
   height: 100vh;                /* ocupă întregul ecran */
-  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80') 
-              center/cover no-repeat;
+  background: url(img/background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
