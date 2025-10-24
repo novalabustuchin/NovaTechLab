@@ -110,6 +110,41 @@ header p {
   display: inline;
 }
 
+#quizz {
+    max-width: 800px;
+    margin:auto;
+  }
+
+  .question {
+    color:black;
+    background:rgba(255,255,255,0.05);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: #0077ff;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .result {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  #score {
+    font-size: 20px;
+    margin-top: 20px;
+  }  
+
 
 /* =====================
    DECORATIE
@@ -159,4 +194,5 @@ footer {
     font-size: 0.9rem;
   }
 }
+
 
