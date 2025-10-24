@@ -32,6 +32,40 @@
     </div>
   </section>
 
+  <section id="quizz">
+    
+    <h1>Nova Lab – Mini Quizz</h1>
+    <p>Răspunde la fiecare afirmație.</p>
+
+    <!-- Prima întrebare -->
+    <div class="question">
+        <p>1. Nova Lab este un spațiu de tehnologie pentru elevi și tineri.</p>
+        <button onclick="checkAnswer(1, true)">Adevărat</button>
+        <button onclick="checkAnswer(1, false)">Fals</button>
+        <div class="result" id="result1"></div>
+    </div>
+
+    <!-- A doua întrebare -->
+    <div class="question">
+        <p>2. Nova Lab se află pe planeta Marte.</p>
+        <button onclick="checkAnswer(2, false)">Adevărat</button>
+        <button onclick="checkAnswer(2, true)">Fals</button>
+        <div class="result" id="result2"></div>
+    </div>
+
+    <!-- A treia întrebare -->
+    <div class="question">
+        <p>3. Nova Lab promovează învățarea prin proiecte practice.</p>
+        <button onclick="checkAnswer(3, true)">Adevărat</button>
+        <button onclick="checkAnswer(3, false)">Fals</button>
+        <div class="result" id="result3"></div>
+    </div>
+
+    <!-- Aici va apărea scorul final -->
+    <div id="score"></div>
+
+</section>
+
   <!-- Decorațiune -->
   <div class="decoration">
     <img src="img/how-hollow-knights-community-crafted-gibberish-into-a-real-language-1567781461548-removebg-preview.png" alt="Decoratie">
@@ -49,5 +83,6 @@
 
 </body>
 </html>
+
 
 
