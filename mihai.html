@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dascalu Mihai Gabriel | Nova Lab Bustuchin</title>
   <script src="https://kit.fontawesome.com/e59a8dd7d9.js" crossorigin="anonymous"></script>
-  <script src="scriptMihai.js"></script>
+  <script src="scriptMihai.js" defer></script>
   <link rel="stylesheet" href="stylesMihai.css">
 </head>
 <body>
@@ -33,39 +33,36 @@
     </div>
   </section>
 
-  <section id="quizz">
-    
-    <h1>Nova Lab – Mini Quizz</h1>
-    <p>Răspunde la fiecare afirmație.</p>
+  <div id="quiz-container">
+    <h1>Proiect 1</h1>
+  <!-- Start -->
+  <div id="start-screen">
+    <h1>Nova Lab – Mini Quiz</h1>
+    <p>Apasă Start pentru a începe.</p>
+    <button id="start-btn">Start Quiz</button>
+  </div>
 
-    <!-- Prima întrebare -->
-    <div class="question">
-        <p>1. Nova Lab este un spațiu de tehnologie pentru elevi și tineri.</p>
-        <button onclick="checkAnswer(1, true)">Adevărat</button>
-        <button onclick="checkAnswer(1, false)">Fals</button>
-        <div class="result" id="result1"></div>
+  <!-- Quiz -->
+  <div id="quiz-screen" aria-hidden="true">
+    <div id="progress-bar"><div id="progress"></div></div>
+    <h2 id="question-text">Întrebare</h2>
+    <div id="answers">
+      <button id="true-btn" data-answer="true">Adevărat</button>
+      <button id="false-btn" data-answer="false">Fals</button>
     </div>
-
-    <!-- A doua întrebare -->
-    <div class="question">
-        <p>2. Nova Lab se află pe planeta Marte.</p>
-        <button onclick="checkAnswer(2, false)">Adevărat</button>
-        <button onclick="checkAnswer(2, true)">Fals</button>
-        <div class="result" id="result2"></div>
+    <p id="feedback" aria-live="polite" style="min-height:1.2em"></p>
+    <div>
+      <button id="next-btn" style="display:none">Următoarea întrebare</button>
     </div>
+  </div>
 
-    <!-- A treia întrebare -->
-    <div class="question">
-        <p>3. Nova Lab promovează învățarea prin proiecte practice.</p>
-        <button onclick="checkAnswer(3, true)">Adevărat</button>
-        <button onclick="checkAnswer(3, false)">Fals</button>
-        <div class="result" id="result3"></div>
-    </div>
-
-    <!-- Aici va apărea scorul final -->
-    <div id="score"></div>
-
-</section>
+  <!-- End -->
+  <div id="end-screen" aria-hidden="true">
+    <h2>Rezultatul tău</h2>
+    <p id="final-score"></p>
+    <button id="restart-btn">Reia quiz-ul</button>
+  </div>
+</div>
 
   <!-- Decorațiune -->
   <div class="decoration">
