@@ -1,0 +1,12 @@
+{
+  "animation": {
+    "triggerOffset": 100,
+    "transitionDuration": 0.8,
+    "transitionType": "ease-out",
+    "startOpacity": 0,
+    "endOpacity": 1,
+    "startScale": 0.9,
+    "endScale": 1.0
+  }
+}
+
