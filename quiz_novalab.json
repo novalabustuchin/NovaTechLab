@@ -1,0 +1,58 @@
+{
+  "quizTitle": "Quiz Interactiv Nova Lab - by Matei9999",
+  "quizDescription": "Un mini-quiz distractiv despre Nova Lab și proiectele lui Matei9999. Încearcă să obții punctajul maxim!",
+  "author": "Matei9999",
+  "questions": [
+    {
+      "question": "Ce este Nova Lab?",
+      "options": [
+        "Un laborator de informatică pentru elevi pasionați de robotică și programare",
+        "O cafenea pentru gameri",
+        "Un magazin de componente electronice",
+        "Un canal YouTube despre Arduino"
+      ],
+      "correct_index": 0
+    },
+    {
+      "question": "Ce limbaje de programare se învață la Nova Lab?",
+      "options": [
+        "C/C++ și HTML",
+        "Style CSS, Java și HTML",
+        "Pyton și Arduino",
+        "Arduino și Scratch"
+      ],
+      "correct_index": 1
+    },
+    {
+      "question": "Cum se numește robotul creat de Matei9999 pentru concursul Nextlab.tech?",
+      "options": [
+        "RoboNova",
+        "Miro9999",
+        "TechBot",
+        "SmartLine"
+      ],
+      "correct_index": 1
+    },
+    {
+      "question": "Ce tip de proiect au realizat elevii la Nova Lab folosind senzori TCRT5000?",
+      "options": [
+        "Un joc de lumini RGB",
+        "Un ceas digital cu alarmă",
+        "Un robot care urmărește o linie",
+        "Un sistem de irigație automată"
+      ],
+      "correct_index": 2
+    },
+    {
+      "question": "În ce aplicații se fac animațiile 3D?",
+      "options": [
+        "Counter-Strike Source",
+        "Hammer",
+        "J.A.C.K",
+        "Blender"
+      ],
+      "correct_index": 3
+    }
+  ]
+}
+ 

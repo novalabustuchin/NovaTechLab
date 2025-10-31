@@ -6,6 +6,30 @@
   <title>Proiectele mele | Matei9999</title>
   <link rel="stylesheet" href="style-matei.css" />
   <script src="script.js"></script>
+  <style>
+    .hidden {
+      display: none;
+    }
+    .btn-switch {
+      display: inline-block;
+      margin: 15px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn-switch:hover {
+      background: #1e40af;
+      transform: scale(1.05);
+    }
+    #smoking-dragon, #tabi-vs-whitty {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
 
@@ -13,148 +37,195 @@
     🎥 Proiectele mele — <strong>Matei9999</strong>
   </header>
 
-  <footer>
-
-     Smoking Dragon (Dragonul Fumător) este un joc reinterpretat de mine, Popescu Matei Rafael, cu scopul de a-i încuraja pe oameni să renunțe la fumat ( programarea, logica, charting-ul și melodiile sunt făcute de mine, dar nu și personajele!! ).
-<br> În joc, îi întâlnești pe trei fumători care se confruntă cu urmările obiceiului lor.
-<br> Pe parcursul melodiilor, unul dintre ei moare și devine un înger, iar ceilalți doi se transformă în dragoni, păstrând jocul cât mai Family-Frendly.
-<br> 🎵 Scopul tău: apasă săgețile la ritmul muzicii pentru a păstra echilibrul dintre viață și moarte.
-<br> 👼 Mesajul jocului: fumatul distruge, dar fiecare alegere poate fi un pas spre vindecare.
-
-
-<br>
-/// <summary>
-/// Smoking Dragon (Dragonul Fumător)
-/// Joc educativ și Family-Friendly.
-/// Nu conține violență, limbaj nepotrivit sau imagini șocante.
-/// </summary>
-
-  </footer>
-
-  <div class="projects-container">
-
-    <div class="project-card reveal">
-      <h2>Smoking-Dragon</h2>
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube.com/embed/0ZbdmxQi22Y?rel=0&modestbranding=1" 
-          title="Smoking-Dragon" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <h2>Jitters</h2>
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube.com/embed/4nJJi5GtvUQ?rel=0&modestbranding=1" 
-          title="Jitters" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <h2>Nerves</h2>
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube.com/embed/ULAT8PcProI?rel=0&modestbranding=1" 
-          title="Nerves" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
+  <!-- 🔘 Butoane pentru comutare -->
+  <div style="text-align:center;">
+    <button class="btn-switch" onclick="showSection('smoking-dragon')">🔥 Smoking Dragon</button>
+    <button class="btn-switch" onclick="showSection('tabi-vs-whitty')">⚡ Tabi vs Whitty</button>
   </div>
 
+  <!-- 🔹 PRIMUL DIV: SMOKING DRAGON -->
+  <div id="smoking-dragon">
+    <footer>
+      Smoking Dragon (Dragonul Fumător) este un joc reinterpretat de mine, Popescu Matei Rafael, cu scopul de a-i încuraja pe oameni să renunțe la fumat ( programarea, logica, charting-ul și melodiile sunt făcute de mine, dar nu și personajele!! ).
+      <br> În joc, îi întâlnești pe trei fumători care se confruntă cu urmările obiceiului lor.
+      <br> Pe parcursul melodiilor, unul dintre ei moare și devine un înger, iar ceilalți doi se transformă în dragoni, păstrând jocul cât mai Family-Friendly.
+      <br> 🎵 Scopul tău: apasă săgețile la ritmul muzicii pentru a păstra echilibrul dintre viață și moarte.
+      <br> 👼 Mesajul jocului: fumatul distruge, dar fiecare alegere poate fi un pas spre vindecare.
+      <br>
+      /// <summary>
+      /// Smoking Dragon (Dragonul Fumător)
+      /// Joc educativ și Family-Friendly.
+      /// Nu conține violență, limbaj nepotrivit sau imagini șocante.
+      /// </summary>
+    </footer>
 
+<div class="projects-container reveal">
+  <div class="project-card">
+    <h2>Smoking Dragon</h2>
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/EXAMPLE_ID" 
+        title="Smoking Dragon"
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
 
-  <footer>
-      Tabi vs Whitty este un remake original inspirat din universul Friday Night Funkin, creat de mine, Popescu Matei Rafael, bazat pe modurile „Vs Tabi” și „Vs Whitty”.Toate melodiile, dialogurile și programarea sunt realizate de mine, dar nu și caracterele!!
+  <div class="project-card">
+    <h2>Jitters</h2>
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/4nJJi5GtvUQ" 
+        title="Jitters"
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <h2>Nerves</h2>
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/ULAT8PcProI"
+        title="Nerves"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>
+</div>
+  <!-- 🔹 AL DOILEA DIV: TABI VS WHITTY -->
+  <div id="tabi-vs-whitty" class="hidden">
+    <footer>
+      Tabi vs Whitty este un remake original inspirat din universul Friday Night Funkin, creat de mine, Popescu Matei Rafael, bazat pe modurile „Vs Tabi” și „Vs Whitty”. Toate melodiile, dialogurile și programarea sunt realizate de mine, dar nu și caracterele!!
       <br> Melodiile sunt făcute de mine, la fel și dialogul și programarea.
       <br> 🕊️ Mesajul jocului:
-
-          Nu judeca și nu ataca pe cineva fără dovezi. În spatele fiecărei povești există adevăruri ascunse... 
+      <br> Nu judeca și nu ataca pe cineva fără dovezi. În spatele fiecărei povești există adevăruri ascunse... 
       <br> Cei doi protagoniști, Tabi și Whitty, au fost transformați într-o creatură mitologică și o bombă umană de către un băiat misterios.
       <br> Tabi crede că Whitty lucrează cu băiatul care i-a transformat în ceea ce sunt, și, orbit de furie, declanșează o explozie în restaurantul în care se află.
-Aceasta este scânteia care aprinde bătălia muzicală dintre cei doi.
+      Aceasta este scânteia care aprinde bătălia muzicală dintre cei doi.
 
-Pe măsură ce povestea evoluează, amândoi își dau seama că sunt victimele aceluiași vinovat, iar conflictul se extinde atunci când și prietenii lor, transformați de același băiat, intră în luptă.
+      <br> Pe măsură ce povestea evoluează, amândoi își dau seama că sunt victimele aceluiași vinovat, iar conflictul se extinde atunci când și prietenii lor, transformați de același băiat, intră în luptă.
       <br> Mai târziu, cei doi își cheamă prietenii, care au trecut prin aceeași soartă, pentru un ultim duel muzical.
 
-     <br> 🕹️ Gameplay <br>
+      <br> 🕹️ Gameplay <br>
+      <br>Scopul tău: apasă săgețile la ritmul muzicii pentru a păstra echilibrul dintre viață și moarte.
+      <br>Ritm rapid și bătălii muzicale intense
+      <br>Mecanici clasice Friday Night Funkin’ cu un twist personal
+      <br>Noi dialoguri și efecte vizuale pentru fiecare etapă
+      <br>Finaluri alternative în funcție de performanță
 
-<br>Scopul tău: apasă săgețile la ritmul muzicii pentru a păstra echilibrul dintre viață și moarte.
+      <br>👨‍💻 Credits
+      <br>Creator, programator, compozitor, scenarist:
+      <br>Popescu Matei Rafael
 
-<br>Ritm rapid și bătălii muzicale intense
+      <br>Inspirat din:
+      <br>Friday Night Funkin’ – Ninjamuffin99
+      <br>Vs Tabi Mod – Homskbriy
+      <br>Vs Whitty Mod – Sock.clip
 
-<br>Mecanici clasice Friday Night Funkin’ cu un twist personal
+      <br>
+      /// <summary>
+      /// Tabi Vs Whitty
+      /// Joc educativ.
+      /// Conține violență minimă ( fără sânge sau arme ). Nu conține limbaj nepotrivit sau imagini șocante. 12+
+      /// Avertisment de epilepsie! Acest joc conține imagini strălucitoare!
+      /// </summary>
+    </footer>
 
-<br>Noi dialoguri și efecte vizuale pentru fiecare etapă
-
-<br>Finaluri alternative în funcție de performanță
-
-<br>👨‍💻 Credits
-
-<br>Creator, programator, compozitor, scenarist:
-
-Popescu Matei Rafael
-
-<br>Inspirat din:
-
-<br>Friday Night Funkin’ – Ninjamuffin99
-<br>Vs Tabi Mod – Homskbriy
-<br>Vs Whitty Mod – Sock.clip
-
-<br>
-/// <summary>
-/// Tabi Vs Whitty
-/// Joc educativ.
-/// Conține violență minimă ( fără sânge sau arme ). Nu conține limbaj nepotrivit sau imagini șocante. 12+
-/// Avertisment de epilepsie! Acest joc conține imagini stralucitoare!
-/// </summary>
-
-  </footer>
-
- <div class="project-card reveal">
+    <div class="project-card reveal">
       <h2>Tabi Vs Whitty FULL WEEK</h2>
       <div class="video-container">
-<iframe
-  src="https://www.youtube.com/embed/494w_TJlQGw"
-  title="Tabi Vs Whitty FULL WEEK"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
-
-
+        <iframe
+          src="https://www.youtube.com/embed/494w_TJlQGw"
+          title="Tabi Vs Whitty FULL WEEK"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
+
     <div class="project-card reveal">
       <h2>Absolute-Rage</h2>
       <div class="video-container">
-<iframe
-  src="https://www.youtube.com/embed/Vs21xn44MEM"
-  title="Absolute-Rage"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
+        <iframe
+          src="https://www.youtube.com/embed/Vs21xn44MEM"
+          title="Absolute-Rage"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
- 
- 
-    <script src="script.js"></script>
+  </div>
+  </div>
 
   <a href="index.html" class="btn-back">⬅ Înapoi</a>
 
+  <script>
+    // Funcția de comutare între secțiuni
+    function showSection(id) {
+      document.getElementById("smoking-dragon").classList.add("hidden");
+      document.getElementById("tabi-vs-whitty").classList.add("hidden");
+      document.getElementById(id).classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
-      </body>
+    fetch("quiz_novalab.json")
+      .then(response => response.json())
+      .then(data => console.log("Quiz încărcat:", data.quizTitle));
+  </script>
+<button id="load-quiz" class="btn-switch">📝 Deschide Quiz Nova Lab</button>
+
+<!-- Container for the quiz -->
+<div id="quiz-container" style="display:none; margin-top:20px;"></div>
+
+<script>
+document.getElementById("load-quiz").addEventListener("click", function() {
+    const container = document.getElementById("quiz-container");
+    container.style.display = "block"; // Show the quiz
+
+    // Fetch the quiz JSON
+    fetch("quiz_novalab.json")
+    .then(response => response.json())
+    .then(data => {
+        container.innerHTML = ""; // Clear any previous content
+
+        // Quiz title and description
+        container.innerHTML += `<h2>${data.quizTitle}</h2>`;
+        container.innerHTML += `<p>${data.quizDescription}</p>`;
+
+        // Add questions
+        data.questions.forEach((q, index) => {
+            const qDiv = document.createElement("div");
+            qDiv.classList.add("quiz-question");
+            qDiv.innerHTML = `<p><strong>${index + 1}. ${q.question}</strong></p>`;
+
+            // Add options
+            q.options.forEach((option, i) => {
+                const btn = document.createElement("button");
+                btn.innerText = option;
+                btn.style.margin = "5px";
+                btn.addEventListener("click", () => {
+                    if (i === q.correct_index) {
+                        alert("✅ Corect!");
+                    } else {
+                        alert("❌ Greșit!");
+                    }
+                });
+                qDiv.appendChild(btn);
+            });
+
+            container.appendChild(qDiv);
+        });
+    })
+    .catch(err => console.error("Eroare la încărcarea quiz-ului:", err));
+});
+</script>
+
+</body>
 </html>
+
+

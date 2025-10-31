@@ -49,3 +49,76 @@ fetch("animation-config.json")
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll();
   });
+
+const quizContainer = document.getElementById("quiz");
+const result = document.getElementById("result");
+const restartBtn = document.getElementById("restart");
+
+let quizData = [];
+let current = 0;
+let score = 0;
+
+// Încarcă fișierul JSON
+fetch("quiz_novalab.json")
+  .then(response => {
+    if (!response.ok) throw new Error("Eroare la încărcarea fișierului JSON!");
+    return response.json();
+  })
+  .then(data => {
+    quizData = data.questions;
+    loadQuestion();
+  })
+  .catch(error => {
+    quizContainer.innerHTML = "<p style='color:red;'>Eroare la încărcarea quiz-ului!</p>";
+    console.error(error);
+  });
+
+function loadQuestion() {
+  const q = quizData[current];
+  quizContainer.innerHTML = `
+    <div class="question">${q.question}</div>
+    ${q.options.map((opt, i) => `<div class="option" onclick="checkAnswer(${i})">${opt}</div>`).join("")}
+  `;
+}
+
+function checkAnswer(i) {
+  const options = document.querySelectorAll(".option");
+  options.forEach((opt, index) => {
+    opt.style.pointerEvents = "none";
+    if (index === quizData[current].correct_index) opt.classList.add("correct");
+    else if (index === i) opt.classList.add("incorrect");
+  });
+
+  if (i === quizData[current].correct_index) score++;
+
+  setTimeout(() => {
+    current++;
+    if (current < quizData.length) loadQuestion();
+    else showResult();
+  }, 800);
+}
+
+function showResult() {
+  quizContainer.innerHTML = "";
+  const messages = [
+    "💪 Mai încearcă!",
+    "😊 Foarte bine!",
+    "🏆 Excelent! Ești un adevărat membru Nova Lab!"
+  ];
+  let feedback =
+    score === quizData.length
+      ? messages[2]
+      : score >= 3
+      ? messages[1]
+      : messages[0];
+  result.innerHTML = `Ai obținut <strong>${score}/${quizData.length}</strong> puncte!<br>${feedback}`;
+  restartBtn.style.display = "inline-block";
+}
+
+restartBtn.addEventListener("click", () => {
+  current = 0;
+  score = 0;
+  result.innerHTML = "";
+  restartBtn.style.display = "none";
+  loadQuestion();
+});
